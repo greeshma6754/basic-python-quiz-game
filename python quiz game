@@ -1,0 +1,47 @@
+# Step 1: Create a list of dictionaries for questions, options, and answers
+quiz = [
+    {
+        "question": "What is the capital of France?",
+        "options": ["a) Berlin", "b) Madrid", "c) Paris", "d) Rome"],
+        "answer": "c"
+    },
+    {
+        "question": "Which planet is known as the Red Planet?",
+        "options": ["a) Earth", "b) Mars", "c) Jupiter", "d) Saturn"],
+        "answer": "b"
+    },
+    {
+        "question": "What is the largest ocean on Earth?",
+        "options": ["a) Atlantic Ocean", "b) Indian Ocean", "c) Arctic Ocean", "d) Pacific Ocean"],
+        "answer": "d"
+    }
+]
+
+# Step 2: Initialize the score
+score = 0
+
+# Step 3: Function to ask questions and check answers
+def ask_question(question):
+    global score
+    print(question["question"])
+    for option in question["options"]:
+        print(option)
+    answer = input("Enter your answer (a, b, c, or d): ").lower()
+
+    # Validate the user input
+    while answer not in ['a', 'b', 'c', 'd']:
+        answer = input("Invalid input. Please enter a, b, c, or d: ").lower()
+
+    if answer == question["answer"]:
+        print("Correct!")
+        score += 1
+    else:
+        print("Incorrect! The correct answer is", question["answer"])
+
+# Step 4: Loop through the questions
+for q in quiz:
+    ask_question(q)
+    print()  # Print a new line for better readability
+
+# Step 5: Display the final score
+print(f"Your final score is {score} out of {len(quiz)}")
